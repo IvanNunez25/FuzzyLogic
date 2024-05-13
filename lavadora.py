@@ -47,7 +47,13 @@ def inferencia():
     tiempo_secado_output = lavadora_sim.output['tiempo_secado']
     velocidad_lavado_output = lavadora_sim.output['velocidad_lavado']
     nivel_agua_output = lavadora_sim.output['nivel_agua']
-    
+    # Imprimir los resultados (puedes hacer lo que desees con ellos)
+    canvas2.delete("texto_anterior")
+    canvas2.create_text(10, 10, text=f"Tiempo de lavado: {tiempo_lavado_output}", anchor="nw", tags="texto_anterior")
+    canvas2.create_text(10, 25, text=f"Tiempo de secado: {tiempo_secado_output}", anchor="nw", tags="texto_anterior")
+    canvas2.create_text(10, 40, text=f"Temperatura: {temperatura_output}", anchor="nw", tags="texto_anterior")
+    canvas2.create_text(10, 55, text=f"Velocidad: {velocidad_lavado_output}", anchor="nw", tags="texto_anterior")
+    canvas2.create_text(10, 70, text=f"Nivel de agua: {nivel_agua_output}", anchor="nw", tags="texto_anterior")
     # Imprimir los resultados (puedes hacer lo que desees con ellos)
     print("Tiempo de lavado:", tiempo_lavado_output)
     print("Temperatura:", temperatura_output)
@@ -93,6 +99,8 @@ ttk.Radiobutton(frame, text="Pesado", value=95, variable=var3).grid(row=3, colum
 
 btn_mostrar = ttk.Button(frame, text="Iniciar", command=inferencia)
 btn_mostrar.grid(row=6, column=0, columnspan=3, padx=5, pady=10, sticky="ew")
+
+
 
 canvas2 = tk.Canvas(frame, width=400, height=350, bg="blue")
 canvas2.grid(row=7, column=0, columnspan=3, padx=0, pady=0)
