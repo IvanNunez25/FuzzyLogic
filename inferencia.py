@@ -70,35 +70,35 @@ def activated_rule ( lavado, temp, secado, vel, agua ):
     elif lavado == 2:
         tiempo_lavado.append( random.randint( 35, 62 ) / 100 )
     else:
-        tiempo_lavado.append( random.randint( 35 ) / 100 )
+        tiempo_lavado.append( random.randint( 0, 35 ) / 100 )
         
     if temp == 1:
         temperatura.append( random.randint( 65, 100 ) / 100 )
     elif temp == 2:
         temperatura.append( random.randint( 35, 65) / 100 )
     else:
-        temperatura.append( random.randint( 35 ) / 100 )
+        temperatura.append( random.randint( 0, 35 ) / 100 )
         
     if secado == 1:
         tiempo_secado.append( random.randint( 65, 100 ) / 100 )
     elif secado == 2:
         tiempo_secado.append( random.randint( 35, 65) / 100 )
     else:
-        tiempo_secado.append( random.randint( 35 ) / 100 )
+        tiempo_secado.append( random.randint( 0, 35 ) / 100 )
         
     if vel == 1:
         velocidad.append( random.randint( 65, 100 ) / 100 )
     elif vel == 2:
         velocidad.append( random.randint( 35, 65) / 100 )
     else:
-        velocidad.append( random.randint( 35 ) / 100 )
+        velocidad.append( random.randint( 0, 35 ) / 100 )
         
     if agua == 1:
         nivel_agua.append( random.randint( 60, 100 ) / 100 )
     elif agua == 2:
         nivel_agua.append( random.randint( 40, 60) / 100 )
     else:
-        nivel_agua.append( random.randint( 40 ) / 100 )
+        nivel_agua.append( random.randint( 0, 40 ) / 100 )
     
 
 def inferencia ( tipo_tela, tipo_suciedad, nivel_carga ):

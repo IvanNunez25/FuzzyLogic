@@ -4,6 +4,9 @@ import numpy as np
 import skfuzzy as fuzz
 from skfuzzy import control as ctrl
 
+import funciones_membresia
+import inferencia
+
 x = 50
 LAVADORA_1 = "#706E6D"
 LAVADORA_2 = "#666463"
@@ -29,17 +32,32 @@ def dibujar_lavadora(canvas):
     points = [(35 + x, 270), (565 + x, 270), (590 + x, 340), (10 + x, 340)]
     canvas.create_polygon(points, fill=BOTONES_LAV)
 
-def inferencia():
+def calcular():
     # Pasar las selecciones de los radio buttons a las variables de entrada
     tipo_tela_input = var1.get()
     tipo_suciedad_input = var2.get()
     nivel_carga_input = var3.get()
     
-    # Computar las salidas utilizando lógica difusa
-    # lavadora_sim.input['tipo_tela'] = tipo_tela_input
-    # lavadora_sim.input['tipo_suciedad'] = tipo_suciedad_input
-    # lavadora_sim.input['nivel_carga'] = nivel_carga_input
-    # lavadora_sim.compute()
+    arr_tipo_tela = []
+    arr_tipo_tela.append( funciones_membresia.pi_shaped( np.arange(0, 101, 1), 0, 0, 5, 15 )[tipo_tela_input - 1] )
+    arr_tipo_tela.append( funciones_membresia.pi_shaped( np.arange(0, 101, 1), 5, 15, 30, 45 )[tipo_tela_input - 1] )
+    arr_tipo_tela.append( funciones_membresia.pi_shaped( np.arange(0, 101, 1), 30, 40, 55, 70 )[tipo_tela_input - 1] )
+    arr_tipo_tela.append( funciones_membresia.pi_shaped( np.arange(0, 101, 1), 55, 65, 80, 95 )[tipo_tela_input - 1] )
+    arr_tipo_tela.append( funciones_membresia.pi_shaped( np.arange(0, 101, 1), 80, 95, 100, 100 )[tipo_tela_input - 1] )
+    
+    arr_suciedad = []
+    arr_suciedad.append( funciones_membresia.generalized_bell( np.arange(0, 101, 1), 20, 4, 4 )[tipo_suciedad_input - 1] )
+    arr_suciedad.append( funciones_membresia.pi_shaped( np.arange(0, 101, 1), 12.5, 35, 50, 87.5 )[tipo_suciedad_input - 1] )
+    arr_suciedad.append( funciones_membresia.trapezoidal( tipo_suciedad_input, 60, 85, 100, 100 ) )
+    
+    arr_carga = []
+    arr_carga.append( funciones_membresia.trapezoidal( nivel_carga_input, 0, 0, 10, 40 ) )
+    arr_carga.append( funciones_membresia.pi_shaped( np.arange(0, 101, 1), 10, 40, 60, 90 )[nivel_carga_input - 1] )
+    arr_carga.append( funciones_membresia.trapezoidal( nivel_carga_input, 60, 90, 100, 100 ) )
+    
+    inf_tiempo, inf_temperatura, inf_secado, inf_velocidad, inf_agua = inferencia.inferencia( arr_tipo_tela, arr_suciedad, arr_carga )
+    
+    print(inf_tiempo, inf_temperatura, inf_secado, inf_velocidad, inf_agua)
     
     # Obtener los resultados de las salidas
     # tiempo_lavado_output = lavadora_sim.output['tiempo_lavado']
@@ -97,7 +115,7 @@ ttk.Radiobutton(frame, text="Ligera", value=0, variable=var3).grid(row=1, column
 ttk.Radiobutton(frame, text="Medio", value=50, variable=var3).grid(row=2, column=2, padx=25, pady=5, sticky="w")
 ttk.Radiobutton(frame, text="Pesado", value=95, variable=var3).grid(row=3, column=2, padx=25, pady=5, sticky="w")
 
-btn_mostrar = ttk.Button(frame, text="Iniciar", command=inferencia)
+btn_mostrar = ttk.Button(frame, text="Iniciar", command=calcular)
 btn_mostrar.grid(row=6, column=0, columnspan=3, padx=5, pady=10, sticky="ew")
 
 
@@ -113,18 +131,20 @@ canvas.pack(side="right")
 dibujar_lavadora(canvas)
 
 # Definir los universos y las funciones de membresía para las entradas y salidas
-# Definiciones de las funciones de membresía para las entradas y salidas
-tipo_tela = ctrl.Antecedent(np.arange(0, 101, 1), 'tipo_tela')
-tipo_tela['piel'] = fuzz.pimf(tipo_tela.universe, 0, 0, 5, 15)
-tipo_tela['seda'] = fuzz.pimf(tipo_tela.universe, 5, 15, 30, 45)
-tipo_tela['lana'] = fuzz.pimf(tipo_tela.universe, 30, 40, 55, 70)
-tipo_tela['algodon'] = fuzz.pimf(tipo_tela.universe, 55, 65, 80, 95)
-tipo_tela['poliester'] = fuzz.pimf(tipo_tela.universe, 80, 95, 100, 100)
+# # Definiciones de las funciones de membresía para las entradas y salidas
+# tipo_tela = ctrl.Antecedent(np.arange(0, 101, 1), 'tipo_tela')
+# tipo_tela['piel'] = fuzz.pimf(tipo_tela.universe, 0, 0, 5, 15)
+# tipo_tela['seda'] = fuzz.pimf(tipo_tela.universe, 5, 15, 30, 45)
+# tipo_tela['lana'] = fuzz.pimf(tipo_tela.universe, 30, 40, 55, 70)
+# tipo_tela['algodon'] = fuzz.pimf(tipo_tela.universe, 55, 65, 80, 95)
+# tipo_tela['poliester'] = fuzz.pimf(tipo_tela.universe, 80, 95, 100, 100)
 
-tipo_suciedad = ctrl.Antecedent(np.arange(0, 101, 1), 'tipo_suciedad')
-tipo_suciedad['manchas_comida'] = fuzz.gbellmf(tipo_suciedad.universe, 20, 4, 4)
-tipo_suciedad['grasa'] = fuzz.pimf(tipo_suciedad.universe, 12.5, 35, 50, 87.5)
-tipo_suciedad['tierra'] = fuzz.trapmf(tipo_suciedad.universe, (60, 85, 100, 100))
+
+
+# tipo_suciedad = ctrl.Antecedent(np.arange(0, 101, 1), 'tipo_suciedad')
+# tipo_suciedad['manchas_comida'] = fuzz.gbellmf(tipo_suciedad.universe, 20, 4, 4)
+# tipo_suciedad['grasa'] = fuzz.pimf(tipo_suciedad.universe, 12.5, 35, 50, 87.5)
+# tipo_suciedad['tierra'] = fuzz.trapmf(tipo_suciedad.universe, (60, 85, 100, 100))
 
 nivel_carga = ctrl.Antecedent(np.arange(0, 101, 1), 'nivel_carga')
 nivel_carga['ligero'] = fuzz.trapmf(nivel_carga.universe, (0, 0, 10, 40))
