@@ -56,6 +56,8 @@ def calcular():
     
     inf_tiempo, inf_temperatura, inf_secado, inf_velocidad, inf_agua = inferencia.inferencia( arr_tipo_tela, arr_suciedad, arr_carga )
     
+    reglas = inferencia.getRules()
+    
     inferencia.clear()
     
     print(inf_tiempo, inf_temperatura, inf_secado, inf_velocidad, inf_agua)
@@ -79,6 +81,13 @@ def calcular():
     print("Tiempo de secado:", tiempo_secado_output)
     print("Velocidad de lavado:", velocidad_lavado_output)
     print("Nivel de agua:", nivel_agua_output)
+    
+    y = 10
+    canvas3.delete("reglas")
+    for regla in reglas:
+        canvas3.create_text(10, y, text=regla, anchor="nw", tags="reglas")
+        y += 30
+        
 
 # Crear ventana de Tkinter
 root = tk.Tk()
@@ -121,8 +130,11 @@ btn_mostrar.grid(row=6, column=0, columnspan=3, padx=5, pady=10, sticky="ew")
 
 
 
-canvas2 = tk.Canvas(frame, width=400, height=350, bg="white")
+canvas2 = tk.Canvas(frame, width=600, height=150, bg="white")
 canvas2.grid(row=7, column=0, columnspan=3, padx=0, pady=0)
+
+canvas3 = tk.Canvas(frame, width=600, height=150, bg="white")
+canvas3.grid(row=8, column=0, columnspan=3, padx=0, pady=0)
 
 # Crear lienzo (Canvas)
 canvas = tk.Canvas(root, width=700, height=600)
