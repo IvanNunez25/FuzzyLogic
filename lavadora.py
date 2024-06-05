@@ -36,17 +36,17 @@ def inferencia():
     nivel_carga_input = var3.get()
     
     # Computar las salidas utilizando lógica difusa
-    lavadora_sim.input['tipo_tela'] = tipo_tela_input
-    lavadora_sim.input['tipo_suciedad'] = tipo_suciedad_input
-    lavadora_sim.input['nivel_carga'] = nivel_carga_input
-    lavadora_sim.compute()
+    # lavadora_sim.input['tipo_tela'] = tipo_tela_input
+    # lavadora_sim.input['tipo_suciedad'] = tipo_suciedad_input
+    # lavadora_sim.input['nivel_carga'] = nivel_carga_input
+    # lavadora_sim.compute()
     
     # Obtener los resultados de las salidas
-    tiempo_lavado_output = lavadora_sim.output['tiempo_lavado']
-    temperatura_output = lavadora_sim.output['temperatura']
-    tiempo_secado_output = lavadora_sim.output['tiempo_secado']
-    velocidad_lavado_output = lavadora_sim.output['velocidad_lavado']
-    nivel_agua_output = lavadora_sim.output['nivel_agua']
+    # tiempo_lavado_output = lavadora_sim.output['tiempo_lavado']
+    # temperatura_output = lavadora_sim.output['temperatura']
+    # tiempo_secado_output = lavadora_sim.output['tiempo_secado']
+    # velocidad_lavado_output = lavadora_sim.output['velocidad_lavado']
+    # nivel_agua_output = lavadora_sim.output['nivel_agua']
     # Imprimir los resultados (puedes hacer lo que desees con ellos)
     canvas2.delete("texto_anterior")
     canvas2.create_text(10, 10, text=f"Tiempo de lavado: {tiempo_lavado_output}", anchor="nw", tags="texto_anterior")
@@ -166,201 +166,201 @@ nivel_agua['alto'] = fuzz.trapmf(nivel_agua.universe, (60, 90, 100, 100))
 # Crea el sistema de control difuso
 # Crea el simulador del sistema de control difuso
 # Definir las reglas de inferencia difusa
-rule1 = ctrl.Rule(antecedent=(tipo_tela['piel'] & tipo_suciedad['manchas_comida'] & nivel_carga['ligero']), 
-                  consequent=(tiempo_lavado['largo'], temperatura['fria'], tiempo_secado['corto'], 
-                              velocidad_lavado['media'], nivel_agua['bajo']))
+# rule1 = ctrl.Rule(antecedent=(tipo_tela['piel'] & tipo_suciedad['manchas_comida'] & nivel_carga['ligero']), 
+#                   consequent=(tiempo_lavado['largo'], temperatura['fria'], tiempo_secado['corto'], 
+#                               velocidad_lavado['media'], nivel_agua['bajo']))
 
-rule2 = ctrl.Rule(antecedent=(tipo_tela['piel'] & tipo_suciedad['manchas_comida'] & nivel_carga['medio']), 
-                  consequent=(tiempo_lavado['largo'], temperatura['templada'], tiempo_secado['medio'], 
-                              velocidad_lavado['media'], nivel_agua['medio']))
+# rule2 = ctrl.Rule(antecedent=(tipo_tela['piel'] & tipo_suciedad['manchas_comida'] & nivel_carga['medio']), 
+#                   consequent=(tiempo_lavado['largo'], temperatura['templada'], tiempo_secado['medio'], 
+#                               velocidad_lavado['media'], nivel_agua['medio']))
 
-rule3 = ctrl.Rule(antecedent=(tipo_tela['piel'] & tipo_suciedad['manchas_comida'] & nivel_carga['pesado']), 
-                  consequent=(tiempo_lavado['largo'], temperatura['templada'], tiempo_secado['largo'], 
-                              velocidad_lavado['media'], nivel_agua['alto']))
+# rule3 = ctrl.Rule(antecedent=(tipo_tela['piel'] & tipo_suciedad['manchas_comida'] & nivel_carga['pesado']), 
+#                   consequent=(tiempo_lavado['largo'], temperatura['templada'], tiempo_secado['largo'], 
+#                               velocidad_lavado['media'], nivel_agua['alto']))
 
-rule4 = ctrl.Rule(antecedent=(tipo_tela['piel'] & tipo_suciedad['grasa'] & nivel_carga['ligero']), 
-                  consequent=(tiempo_lavado['medio'], temperatura['templada'], tiempo_secado['corto'], 
-                              velocidad_lavado['media'], nivel_agua['bajo']))
+# rule4 = ctrl.Rule(antecedent=(tipo_tela['piel'] & tipo_suciedad['grasa'] & nivel_carga['ligero']), 
+#                   consequent=(tiempo_lavado['medio'], temperatura['templada'], tiempo_secado['corto'], 
+#                               velocidad_lavado['media'], nivel_agua['bajo']))
 
-rule5 = ctrl.Rule(antecedent=(tipo_tela['piel'] & tipo_suciedad['grasa'] & nivel_carga['medio']), 
-                  consequent=(tiempo_lavado['medio'], temperatura['templada'], tiempo_secado['medio'], 
-                              velocidad_lavado['media'], nivel_agua['medio']))
+# rule5 = ctrl.Rule(antecedent=(tipo_tela['piel'] & tipo_suciedad['grasa'] & nivel_carga['medio']), 
+#                   consequent=(tiempo_lavado['medio'], temperatura['templada'], tiempo_secado['medio'], 
+#                               velocidad_lavado['media'], nivel_agua['medio']))
 
-rule6 = ctrl.Rule(antecedent=(tipo_tela['piel'] & tipo_suciedad['grasa'] & nivel_carga['pesado']), 
-                  consequent=(tiempo_lavado['medio'], temperatura['templada'], tiempo_secado['largo'], 
-                              velocidad_lavado['media'], nivel_agua['alto']))
+# rule6 = ctrl.Rule(antecedent=(tipo_tela['piel'] & tipo_suciedad['grasa'] & nivel_carga['pesado']), 
+#                   consequent=(tiempo_lavado['medio'], temperatura['templada'], tiempo_secado['largo'], 
+#                               velocidad_lavado['media'], nivel_agua['alto']))
 
-rule7 = ctrl.Rule(antecedent=(tipo_tela['piel'] & tipo_suciedad['tierra'] & nivel_carga['ligero']), 
-                  consequent=(tiempo_lavado['corto'], temperatura['fria'], tiempo_secado['corto'], 
-                              velocidad_lavado['baja'], nivel_agua['bajo']))
+# rule7 = ctrl.Rule(antecedent=(tipo_tela['piel'] & tipo_suciedad['tierra'] & nivel_carga['ligero']), 
+#                   consequent=(tiempo_lavado['corto'], temperatura['fria'], tiempo_secado['corto'], 
+#                               velocidad_lavado['baja'], nivel_agua['bajo']))
 
-rule8 = ctrl.Rule(antecedent=(tipo_tela['piel'] & tipo_suciedad['tierra'] & nivel_carga['medio']), 
-                  consequent=(tiempo_lavado['corto'], temperatura['fria'], tiempo_secado['medio'], 
-                              velocidad_lavado['baja'], nivel_agua['medio']))
+# rule8 = ctrl.Rule(antecedent=(tipo_tela['piel'] & tipo_suciedad['tierra'] & nivel_carga['medio']), 
+#                   consequent=(tiempo_lavado['corto'], temperatura['fria'], tiempo_secado['medio'], 
+#                               velocidad_lavado['baja'], nivel_agua['medio']))
 
-rule9 = ctrl.Rule(antecedent=(tipo_tela['piel'] & tipo_suciedad['tierra'] & nivel_carga['pesado']), 
-                  consequent=(tiempo_lavado['corto'], temperatura['fria'], tiempo_secado['largo'], 
-                              velocidad_lavado['baja'], nivel_agua['alto']))
+# rule9 = ctrl.Rule(antecedent=(tipo_tela['piel'] & tipo_suciedad['tierra'] & nivel_carga['pesado']), 
+#                   consequent=(tiempo_lavado['corto'], temperatura['fria'], tiempo_secado['largo'], 
+#                               velocidad_lavado['baja'], nivel_agua['alto']))
 
-rule10 = ctrl.Rule(antecedent=(tipo_tela['seda'] & tipo_suciedad['manchas_comida'] & nivel_carga['ligero']), 
-                  consequent=(tiempo_lavado['largo'], temperatura['fria'], tiempo_secado['corto'], 
-                              velocidad_lavado['baja'], nivel_agua['bajo']))
+# rule10 = ctrl.Rule(antecedent=(tipo_tela['seda'] & tipo_suciedad['manchas_comida'] & nivel_carga['ligero']), 
+#                   consequent=(tiempo_lavado['largo'], temperatura['fria'], tiempo_secado['corto'], 
+#                               velocidad_lavado['baja'], nivel_agua['bajo']))
 
-rule11 = ctrl.Rule(antecedent=(tipo_tela['seda'] & tipo_suciedad['manchas_comida'] & nivel_carga['medio']), 
-                  consequent=(tiempo_lavado['largo'], temperatura['fria'], tiempo_secado['medio'], 
-                              velocidad_lavado['baja'], nivel_agua['medio']))
+# rule11 = ctrl.Rule(antecedent=(tipo_tela['seda'] & tipo_suciedad['manchas_comida'] & nivel_carga['medio']), 
+#                   consequent=(tiempo_lavado['largo'], temperatura['fria'], tiempo_secado['medio'], 
+#                               velocidad_lavado['baja'], nivel_agua['medio']))
 
-rule12 = ctrl.Rule(antecedent=(tipo_tela['seda'] & tipo_suciedad['manchas_comida'] & nivel_carga['pesado']), 
-                  consequent=(tiempo_lavado['largo'], temperatura['fria'], tiempo_secado['largo'], 
-                              velocidad_lavado['baja'], nivel_agua['alto']))
+# rule12 = ctrl.Rule(antecedent=(tipo_tela['seda'] & tipo_suciedad['manchas_comida'] & nivel_carga['pesado']), 
+#                   consequent=(tiempo_lavado['largo'], temperatura['fria'], tiempo_secado['largo'], 
+#                               velocidad_lavado['baja'], nivel_agua['alto']))
 
-rule13 = ctrl.Rule(antecedent=(tipo_tela['seda'] & tipo_suciedad['grasa'] & nivel_carga['ligero']), 
-                  consequent=(tiempo_lavado['medio'], temperatura['fria'], tiempo_secado['corto'], 
-                              velocidad_lavado['baja'], nivel_agua['bajo']))
+# rule13 = ctrl.Rule(antecedent=(tipo_tela['seda'] & tipo_suciedad['grasa'] & nivel_carga['ligero']), 
+#                   consequent=(tiempo_lavado['medio'], temperatura['fria'], tiempo_secado['corto'], 
+#                               velocidad_lavado['baja'], nivel_agua['bajo']))
 
-rule14 = ctrl.Rule(antecedent=(tipo_tela['seda'] & tipo_suciedad['grasa'] & nivel_carga['medio']), 
-                  consequent=(tiempo_lavado['medio'], temperatura['fria'], tiempo_secado['medio'], 
-                              velocidad_lavado['baja'], nivel_agua['medio']))
+# rule14 = ctrl.Rule(antecedent=(tipo_tela['seda'] & tipo_suciedad['grasa'] & nivel_carga['medio']), 
+#                   consequent=(tiempo_lavado['medio'], temperatura['fria'], tiempo_secado['medio'], 
+#                               velocidad_lavado['baja'], nivel_agua['medio']))
                               
-rule15 = ctrl.Rule(antecedent=(tipo_tela['seda'] & tipo_suciedad['grasa'] & nivel_carga['pesado']), 
-                  consequent=(tiempo_lavado['medio'], temperatura['fria'], tiempo_secado['largo'], 
-                              velocidad_lavado['baja'], nivel_agua['alto']))
+# rule15 = ctrl.Rule(antecedent=(tipo_tela['seda'] & tipo_suciedad['grasa'] & nivel_carga['pesado']), 
+#                   consequent=(tiempo_lavado['medio'], temperatura['fria'], tiempo_secado['largo'], 
+#                               velocidad_lavado['baja'], nivel_agua['alto']))
 
-rule16= ctrl.Rule(antecedent=(tipo_tela['seda'] & tipo_suciedad['tierra'] & nivel_carga['ligero']), 
-                  consequent=(tiempo_lavado['corto'], temperatura['fria'], tiempo_secado['corto'], 
-                              velocidad_lavado['baja'], nivel_agua['bajo']))
+# rule16= ctrl.Rule(antecedent=(tipo_tela['seda'] & tipo_suciedad['tierra'] & nivel_carga['ligero']), 
+#                   consequent=(tiempo_lavado['corto'], temperatura['fria'], tiempo_secado['corto'], 
+#                               velocidad_lavado['baja'], nivel_agua['bajo']))
 
-rule17= ctrl.Rule(antecedent=(tipo_tela['seda'] & tipo_suciedad['tierra'] & nivel_carga['medio']), 
-                  consequent=(tiempo_lavado['corto'], temperatura['fria'], tiempo_secado['medio'], 
-                              velocidad_lavado['baja'], nivel_agua['medio']))
+# rule17= ctrl.Rule(antecedent=(tipo_tela['seda'] & tipo_suciedad['tierra'] & nivel_carga['medio']), 
+#                   consequent=(tiempo_lavado['corto'], temperatura['fria'], tiempo_secado['medio'], 
+#                               velocidad_lavado['baja'], nivel_agua['medio']))
 
-rule18= ctrl.Rule(antecedent=(tipo_tela['seda'] & tipo_suciedad['tierra'] & nivel_carga['pesado']), 
-                  consequent=(tiempo_lavado['corto'], temperatura['fria'], tiempo_secado['largo'], 
-                              velocidad_lavado['baja'], nivel_agua['alto']))
+# rule18= ctrl.Rule(antecedent=(tipo_tela['seda'] & tipo_suciedad['tierra'] & nivel_carga['pesado']), 
+#                   consequent=(tiempo_lavado['corto'], temperatura['fria'], tiempo_secado['largo'], 
+#                               velocidad_lavado['baja'], nivel_agua['alto']))
 
-rule19 = ctrl.Rule(antecedent=(tipo_tela['lana'] & tipo_suciedad['manchas_comida'] & nivel_carga['ligero']), 
-                  consequent=(tiempo_lavado['largo'], temperatura['fria'], tiempo_secado['corto'], 
-                              velocidad_lavado['media'], nivel_agua['bajo']))
+# rule19 = ctrl.Rule(antecedent=(tipo_tela['lana'] & tipo_suciedad['manchas_comida'] & nivel_carga['ligero']), 
+#                   consequent=(tiempo_lavado['largo'], temperatura['fria'], tiempo_secado['corto'], 
+#                               velocidad_lavado['media'], nivel_agua['bajo']))
 
-rule20 = ctrl.Rule(antecedent=(tipo_tela['lana'] & tipo_suciedad['manchas_comida'] & nivel_carga['medio']), 
-                  consequent=(tiempo_lavado['largo'], temperatura['fria'], tiempo_secado['medio'], 
-                              velocidad_lavado['media'], nivel_agua['medio']))
+# rule20 = ctrl.Rule(antecedent=(tipo_tela['lana'] & tipo_suciedad['manchas_comida'] & nivel_carga['medio']), 
+#                   consequent=(tiempo_lavado['largo'], temperatura['fria'], tiempo_secado['medio'], 
+#                               velocidad_lavado['media'], nivel_agua['medio']))
 
-rule21 = ctrl.Rule(antecedent=(tipo_tela['lana'] & tipo_suciedad['manchas_comida'] & nivel_carga['pesado']), 
-                  consequent=(tiempo_lavado['largo'], temperatura['fria'], tiempo_secado['largo'], 
-                              velocidad_lavado['media'], nivel_agua['alto']))
+# rule21 = ctrl.Rule(antecedent=(tipo_tela['lana'] & tipo_suciedad['manchas_comida'] & nivel_carga['pesado']), 
+#                   consequent=(tiempo_lavado['largo'], temperatura['fria'], tiempo_secado['largo'], 
+#                               velocidad_lavado['media'], nivel_agua['alto']))
 
-rule22 = ctrl.Rule(antecedent=(tipo_tela['lana'] & tipo_suciedad['grasa'] & nivel_carga['ligero']), 
-                  consequent=(tiempo_lavado['medio'], temperatura['fria'], tiempo_secado['corto'], 
-                              velocidad_lavado['baja'], nivel_agua['bajo']))
+# rule22 = ctrl.Rule(antecedent=(tipo_tela['lana'] & tipo_suciedad['grasa'] & nivel_carga['ligero']), 
+#                   consequent=(tiempo_lavado['medio'], temperatura['fria'], tiempo_secado['corto'], 
+#                               velocidad_lavado['baja'], nivel_agua['bajo']))
 
-rule23 = ctrl.Rule(antecedent=(tipo_tela['lana'] & tipo_suciedad['grasa'] & nivel_carga['medio']), 
-                  consequent=(tiempo_lavado['medio'], temperatura['fria'], tiempo_secado['medio'], 
-                              velocidad_lavado['baja'], nivel_agua['medio']))
+# rule23 = ctrl.Rule(antecedent=(tipo_tela['lana'] & tipo_suciedad['grasa'] & nivel_carga['medio']), 
+#                   consequent=(tiempo_lavado['medio'], temperatura['fria'], tiempo_secado['medio'], 
+#                               velocidad_lavado['baja'], nivel_agua['medio']))
                               
-rule24 = ctrl.Rule(antecedent=(tipo_tela['lana'] & tipo_suciedad['grasa'] & nivel_carga['pesado']), 
-                  consequent=(tiempo_lavado['medio'], temperatura['fria'], tiempo_secado['largo'], 
-                              velocidad_lavado['baja'], nivel_agua['alto']))
+# rule24 = ctrl.Rule(antecedent=(tipo_tela['lana'] & tipo_suciedad['grasa'] & nivel_carga['pesado']), 
+#                   consequent=(tiempo_lavado['medio'], temperatura['fria'], tiempo_secado['largo'], 
+#                               velocidad_lavado['baja'], nivel_agua['alto']))
 
-rule25 = ctrl.Rule(antecedent=(tipo_tela['lana'] & tipo_suciedad['tierra'] & nivel_carga['ligero']), 
-                  consequent=(tiempo_lavado['corto'], temperatura['fria'], tiempo_secado['corto'], 
-                              velocidad_lavado['baja'], nivel_agua['bajo']))
+# rule25 = ctrl.Rule(antecedent=(tipo_tela['lana'] & tipo_suciedad['tierra'] & nivel_carga['ligero']), 
+#                   consequent=(tiempo_lavado['corto'], temperatura['fria'], tiempo_secado['corto'], 
+#                               velocidad_lavado['baja'], nivel_agua['bajo']))
 
-rule26 = ctrl.Rule(antecedent=(tipo_tela['lana'] & tipo_suciedad['tierra'] & nivel_carga['medio']), 
-                  consequent=(tiempo_lavado['corto'], temperatura['fria'], tiempo_secado['medio'], 
-                              velocidad_lavado['baja'], nivel_agua['medio']))
+# rule26 = ctrl.Rule(antecedent=(tipo_tela['lana'] & tipo_suciedad['tierra'] & nivel_carga['medio']), 
+#                   consequent=(tiempo_lavado['corto'], temperatura['fria'], tiempo_secado['medio'], 
+#                               velocidad_lavado['baja'], nivel_agua['medio']))
 
-rule27 = ctrl.Rule(antecedent=(tipo_tela['lana'] & tipo_suciedad['tierra'] & nivel_carga['pesado']), 
-                  consequent=(tiempo_lavado['corto'], temperatura['fria'], tiempo_secado['largo'], 
-                              velocidad_lavado['baja'], nivel_agua['alto']))
+# rule27 = ctrl.Rule(antecedent=(tipo_tela['lana'] & tipo_suciedad['tierra'] & nivel_carga['pesado']), 
+#                   consequent=(tiempo_lavado['corto'], temperatura['fria'], tiempo_secado['largo'], 
+#                               velocidad_lavado['baja'], nivel_agua['alto']))
 
-rule28 = ctrl.Rule(antecedent=(tipo_tela['algodon'] & tipo_suciedad['manchas_comida'] & nivel_carga['ligero']), 
-                  consequent=(tiempo_lavado['largo'], temperatura['templada'], tiempo_secado['corto'], 
-                              velocidad_lavado['alta'], nivel_agua['bajo']))
+# rule28 = ctrl.Rule(antecedent=(tipo_tela['algodon'] & tipo_suciedad['manchas_comida'] & nivel_carga['ligero']), 
+#                   consequent=(tiempo_lavado['largo'], temperatura['templada'], tiempo_secado['corto'], 
+#                               velocidad_lavado['alta'], nivel_agua['bajo']))
 
-rule29 = ctrl.Rule(antecedent=(tipo_tela['algodon'] & tipo_suciedad['manchas_comida'] & nivel_carga['medio']), 
-                  consequent=(tiempo_lavado['largo'], temperatura['templada'], tiempo_secado['medio'], 
-                              velocidad_lavado['alta'], nivel_agua['medio']))
+# rule29 = ctrl.Rule(antecedent=(tipo_tela['algodon'] & tipo_suciedad['manchas_comida'] & nivel_carga['medio']), 
+#                   consequent=(tiempo_lavado['largo'], temperatura['templada'], tiempo_secado['medio'], 
+#                               velocidad_lavado['alta'], nivel_agua['medio']))
 
-rule30 = ctrl.Rule(antecedent=(tipo_tela['algodon'] & tipo_suciedad['manchas_comida'] & nivel_carga['pesado']), 
-                  consequent=(tiempo_lavado['largo'], temperatura['templada'], tiempo_secado['largo'], 
-                              velocidad_lavado['alta'], nivel_agua['alto']))
+# rule30 = ctrl.Rule(antecedent=(tipo_tela['algodon'] & tipo_suciedad['manchas_comida'] & nivel_carga['pesado']), 
+#                   consequent=(tiempo_lavado['largo'], temperatura['templada'], tiempo_secado['largo'], 
+#                               velocidad_lavado['alta'], nivel_agua['alto']))
 
-rule31 = ctrl.Rule(antecedent=(tipo_tela['algodon'] & tipo_suciedad['grasa'] & nivel_carga['ligero']), 
-                  consequent=(tiempo_lavado['medio'], temperatura['templada'], tiempo_secado['corto'], 
-                              velocidad_lavado['media'], nivel_agua['bajo']))
+# rule31 = ctrl.Rule(antecedent=(tipo_tela['algodon'] & tipo_suciedad['grasa'] & nivel_carga['ligero']), 
+#                   consequent=(tiempo_lavado['medio'], temperatura['templada'], tiempo_secado['corto'], 
+#                               velocidad_lavado['media'], nivel_agua['bajo']))
 
-rule32 = ctrl.Rule(antecedent=(tipo_tela['algodon'] & tipo_suciedad['grasa'] & nivel_carga['medio']), 
-                  consequent=(tiempo_lavado['medio'], temperatura['templada'], tiempo_secado['medio'], 
-                              velocidad_lavado['media'], nivel_agua['medio']))
+# rule32 = ctrl.Rule(antecedent=(tipo_tela['algodon'] & tipo_suciedad['grasa'] & nivel_carga['medio']), 
+#                   consequent=(tiempo_lavado['medio'], temperatura['templada'], tiempo_secado['medio'], 
+#                               velocidad_lavado['media'], nivel_agua['medio']))
                               
-rule33 = ctrl.Rule(antecedent=(tipo_tela['algodon'] & tipo_suciedad['grasa'] & nivel_carga['pesado']), 
-                  consequent=(tiempo_lavado['medio'], temperatura['templada'], tiempo_secado['largo'], 
-                              velocidad_lavado['media'], nivel_agua['alto']))
+# rule33 = ctrl.Rule(antecedent=(tipo_tela['algodon'] & tipo_suciedad['grasa'] & nivel_carga['pesado']), 
+#                   consequent=(tiempo_lavado['medio'], temperatura['templada'], tiempo_secado['largo'], 
+#                               velocidad_lavado['media'], nivel_agua['alto']))
 
-rule34 = ctrl.Rule(antecedent=(tipo_tela['algodon'] & tipo_suciedad['tierra'] & nivel_carga['ligero']), 
-                  consequent=(tiempo_lavado['corto'], temperatura['fria'], tiempo_secado['corto'], 
-                              velocidad_lavado['baja'], nivel_agua['bajo']))
+# rule34 = ctrl.Rule(antecedent=(tipo_tela['algodon'] & tipo_suciedad['tierra'] & nivel_carga['ligero']), 
+#                   consequent=(tiempo_lavado['corto'], temperatura['fria'], tiempo_secado['corto'], 
+#                               velocidad_lavado['baja'], nivel_agua['bajo']))
 
-rule35 = ctrl.Rule(antecedent=(tipo_tela['algodon'] & tipo_suciedad['tierra'] & nivel_carga['medio']), 
-                  consequent=(tiempo_lavado['corto'], temperatura['fria'], tiempo_secado['medio'], 
-                              velocidad_lavado['baja'], nivel_agua['medio']))
+# rule35 = ctrl.Rule(antecedent=(tipo_tela['algodon'] & tipo_suciedad['tierra'] & nivel_carga['medio']), 
+#                   consequent=(tiempo_lavado['corto'], temperatura['fria'], tiempo_secado['medio'], 
+#                               velocidad_lavado['baja'], nivel_agua['medio']))
 
-rule36 = ctrl.Rule(antecedent=(tipo_tela['algodon'] & tipo_suciedad['tierra'] & nivel_carga['pesado']), 
-                  consequent=(tiempo_lavado['corto'], temperatura['fria'], tiempo_secado['largo'], 
-                              velocidad_lavado['baja'], nivel_agua['alto']))
+# rule36 = ctrl.Rule(antecedent=(tipo_tela['algodon'] & tipo_suciedad['tierra'] & nivel_carga['pesado']), 
+#                   consequent=(tiempo_lavado['corto'], temperatura['fria'], tiempo_secado['largo'], 
+#                               velocidad_lavado['baja'], nivel_agua['alto']))
 
-rule37 = ctrl.Rule(antecedent=(tipo_tela['poliester'] & tipo_suciedad['manchas_comida'] & nivel_carga['ligero']), 
-                  consequent=(tiempo_lavado['largo'], temperatura['caliente'], tiempo_secado['corto'], 
-                              velocidad_lavado['alta'], nivel_agua['bajo']))
+# rule37 = ctrl.Rule(antecedent=(tipo_tela['poliester'] & tipo_suciedad['manchas_comida'] & nivel_carga['ligero']), 
+#                   consequent=(tiempo_lavado['largo'], temperatura['caliente'], tiempo_secado['corto'], 
+#                               velocidad_lavado['alta'], nivel_agua['bajo']))
 
-rule38 = ctrl.Rule(antecedent=(tipo_tela['poliester'] & tipo_suciedad['manchas_comida'] & nivel_carga['medio']), 
-                  consequent=(tiempo_lavado['largo'], temperatura['caliente'], tiempo_secado['medio'], 
-                              velocidad_lavado['alta'], nivel_agua['medio']))
+# rule38 = ctrl.Rule(antecedent=(tipo_tela['poliester'] & tipo_suciedad['manchas_comida'] & nivel_carga['medio']), 
+#                   consequent=(tiempo_lavado['largo'], temperatura['caliente'], tiempo_secado['medio'], 
+#                               velocidad_lavado['alta'], nivel_agua['medio']))
 
-rule39 = ctrl.Rule(antecedent=(tipo_tela['poliester'] & tipo_suciedad['manchas_comida'] & nivel_carga['pesado']), 
-                  consequent=(tiempo_lavado['largo'], temperatura['caliente'], tiempo_secado['largo'], 
-                              velocidad_lavado['alta'], nivel_agua['alto']))
+# rule39 = ctrl.Rule(antecedent=(tipo_tela['poliester'] & tipo_suciedad['manchas_comida'] & nivel_carga['pesado']), 
+#                   consequent=(tiempo_lavado['largo'], temperatura['caliente'], tiempo_secado['largo'], 
+#                               velocidad_lavado['alta'], nivel_agua['alto']))
 
-rule40 = ctrl.Rule(antecedent=(tipo_tela['poliester'] & tipo_suciedad['grasa'] & nivel_carga['ligero']), 
-                  consequent=(tiempo_lavado['medio'], temperatura['templada'], tiempo_secado['corto'], 
-                              velocidad_lavado['media'], nivel_agua['bajo']))
+# rule40 = ctrl.Rule(antecedent=(tipo_tela['poliester'] & tipo_suciedad['grasa'] & nivel_carga['ligero']), 
+#                   consequent=(tiempo_lavado['medio'], temperatura['templada'], tiempo_secado['corto'], 
+#                               velocidad_lavado['media'], nivel_agua['bajo']))
 
-rule41 = ctrl.Rule(antecedent=(tipo_tela['poliester'] & tipo_suciedad['grasa'] & nivel_carga['medio']), 
-                  consequent=(tiempo_lavado['medio'], temperatura['templada'], tiempo_secado['medio'], 
-                              velocidad_lavado['media'], nivel_agua['medio']))
+# rule41 = ctrl.Rule(antecedent=(tipo_tela['poliester'] & tipo_suciedad['grasa'] & nivel_carga['medio']), 
+#                   consequent=(tiempo_lavado['medio'], temperatura['templada'], tiempo_secado['medio'], 
+#                               velocidad_lavado['media'], nivel_agua['medio']))
                               
-rule42 = ctrl.Rule(antecedent=(tipo_tela['poliester'] & tipo_suciedad['grasa'] & nivel_carga['pesado']), 
-                  consequent=(tiempo_lavado['medio'], temperatura['templada'], tiempo_secado['largo'], 
-                              velocidad_lavado['media'], nivel_agua['alto']))
+# rule42 = ctrl.Rule(antecedent=(tipo_tela['poliester'] & tipo_suciedad['grasa'] & nivel_carga['pesado']), 
+#                   consequent=(tiempo_lavado['medio'], temperatura['templada'], tiempo_secado['largo'], 
+#                               velocidad_lavado['media'], nivel_agua['alto']))
 
-rule43 = ctrl.Rule(antecedent=(tipo_tela['poliester'] & tipo_suciedad['tierra'] & nivel_carga['ligero']), 
-                  consequent=(tiempo_lavado['corto'], temperatura['fria'], tiempo_secado['corto'], 
-                              velocidad_lavado['baja'], nivel_agua['bajo']))
+# rule43 = ctrl.Rule(antecedent=(tipo_tela['poliester'] & tipo_suciedad['tierra'] & nivel_carga['ligero']), 
+#                   consequent=(tiempo_lavado['corto'], temperatura['fria'], tiempo_secado['corto'], 
+#                               velocidad_lavado['baja'], nivel_agua['bajo']))
 
-rule44 = ctrl.Rule(antecedent=(tipo_tela['poliester'] & tipo_suciedad['tierra'] & nivel_carga['medio']), 
-                  consequent=(tiempo_lavado['corto'], temperatura['fria'], tiempo_secado['medio'], 
-                              velocidad_lavado['baja'], nivel_agua['medio']))
+# rule44 = ctrl.Rule(antecedent=(tipo_tela['poliester'] & tipo_suciedad['tierra'] & nivel_carga['medio']), 
+#                   consequent=(tiempo_lavado['corto'], temperatura['fria'], tiempo_secado['medio'], 
+#                               velocidad_lavado['baja'], nivel_agua['medio']))
 
-rule45 = ctrl.Rule(antecedent=(tipo_tela['poliester'] & tipo_suciedad['tierra'] & nivel_carga['pesado']), 
-                  consequent=(tiempo_lavado['corto'], temperatura['fria'], tiempo_secado['largo'], 
-                              velocidad_lavado['baja'], nivel_agua['alto']))
+# rule45 = ctrl.Rule(antecedent=(tipo_tela['poliester'] & tipo_suciedad['tierra'] & nivel_carga['pesado']), 
+#                   consequent=(tiempo_lavado['corto'], temperatura['fria'], tiempo_secado['largo'], 
+#                               velocidad_lavado['baja'], nivel_agua['alto']))
 
 
 # Puedes continuar añadiendo las reglas restantes de manera similar
 
 
-rules = [rule1, rule2, rule3, rule4, rule5, rule6, rule7, rule8, rule9, rule10,
-         rule11, rule12, rule13, rule14, rule15, rule16, rule17, rule18, rule19, rule20,
-         rule21, rule22, rule23, rule24, rule25, rule26, rule27, rule28, rule29, rule30,
-         rule31, rule32, rule33, rule34, rule35, rule36, rule37, rule38, rule39, rule40,
-         rule41, rule42, rule43, rule44,rule45]
+# rules = [rule1, rule2, rule3, rule4, rule5, rule6, rule7, rule8, rule9, rule10,
+#          rule11, rule12, rule13, rule14, rule15, rule16, rule17, rule18, rule19, rule20,
+#          rule21, rule22, rule23, rule24, rule25, rule26, rule27, rule28, rule29, rule30,
+#          rule31, rule32, rule33, rule34, rule35, rule36, rule37, rule38, rule39, rule40,
+#          rule41, rule42, rule43, rule44,rule45]
 # Cargar el sistema de control difuso desde el archivo FIS
-lavadora_ctrl = ctrl.ControlSystem(rules)
+# lavadora_ctrl = ctrl.ControlSystem(rules)
 
 
 # Crea el simulador del sistema de control difuso
-lavadora_sim = ctrl.ControlSystemSimulation(lavadora_ctrl)
+# lavadora_sim = ctrl.ControlSystemSimulation(lavadora_ctrl)
 
 # Ejecutar la aplicación
 root.mainloop()
