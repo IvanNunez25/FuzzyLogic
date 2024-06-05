@@ -248,4 +248,11 @@ def inferencia ( tipo_tela, tipo_suciedad, nivel_carga ):
     if fuzzy_and( tipo_tela[4], fuzzy_and( tipo_suciedad[2], nivel_carga[2] ) ) > 0:
         activated_rule( 1, 1, 3, 1, 3 )
     
-    return tiempo_lavado, temperatura, tiempo_secado, velocidad, nivel_agua
+    return tiempo_lavado.copy(), temperatura.copy(), tiempo_secado.copy(), velocidad.copy(), nivel_agua.copy()
+
+def clear ():
+    tiempo_lavado.clear()
+    temperatura.clear()
+    tiempo_secado.clear()
+    velocidad.clear()
+    nivel_agua.clear()
